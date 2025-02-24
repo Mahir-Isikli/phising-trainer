@@ -4,6 +4,37 @@ import { Crown, Sparkles } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { useEffect } from 'react';
 
+const getFeedbackMessage = (correctAnswers: number, totalAnswers: number) => {
+  const accuracy = (correctAnswers / totalAnswers) * 100;
+  
+  if (accuracy === 100) {
+    return {
+      title: "Perfekt, %name%! 🌟",
+      subtitle: "Du hast absolute Perfektion erreicht!"
+    };
+  } else if (accuracy >= 90) {
+    return {
+      title: "Hervorragend, %name%! 🎯",
+      subtitle: "Du hast ein ausgezeichnetes Gespür für Phishing-Mails"
+    };
+  } else if (accuracy >= 80) {
+    return {
+      title: "Sehr gut, %name%! 👏",
+      subtitle: "Du bist auf einem sehr guten Weg zur E-Mail-Sicherheit"
+    };
+  } else if (accuracy >= 70) {
+    return {
+      title: "Gut gemacht, %name%! 💪",
+      subtitle: "Du entwickelst ein gutes Verständnis für E-Mail-Sicherheit"
+    };
+  } else {
+    return {
+      title: "Gut gekämpft, %name%! 🎯",
+      subtitle: "Mit mehr Übung wirst du noch sicherer in der Erkennung"
+    };
+  }
+};
+
 interface EndScreenProps {
   playerName: string;
 }
@@ -60,10 +91,10 @@ export const EndScreen = ({ playerName }: EndScreenProps) => {
             
             <div className="opacity-0 translate-y-2 animate-[fadeSlideUp_0.5s_ease-out_0.4s_forwards]">
               <h2 className="text-3xl sm:text-4xl font-bold text-blue-900 mb-3 mt-8">
-                Fantastisch, {playerName}! 🎉
+                {getFeedbackMessage(stats.correctAnswers, stats.totalAnswers).title.replace('%name%', playerName)}
               </h2>
               <p className="text-lg sm:text-xl text-blue-700 font-medium">
-                Du hast das Training mit Bravour gemeistert
+                {getFeedbackMessage(stats.correctAnswers, stats.totalAnswers).subtitle}
               </p>
             </div>
           </div>
