@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useGameStore } from '../store/gameStore';
 import { sampleEmails } from '../data/sampleEmails';
 
@@ -8,6 +8,16 @@ interface GameStats {
   totalAnswers: number;
   averageResponseTime: number;
 }
+
+// Fisher-Yates shuffle algorithm for randomizing the emails array
+const shuffleArray = <T>(array: T[]): T[] => {
+  const shuffled = [...array];
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+  return shuffled;
+};
 
 export const useGameLogic = () => {
   const {
@@ -25,6 +35,9 @@ export const useGameLogic = () => {
     resetGame,
   } = useGameStore();
 
+  // Shuffle emails once when the hook is initialized
+  const shuffledEmails = useMemo(() => shuffleArray(sampleEmails), []);
+
   const startGame = useCallback(() => {
     setGameState('playing');
     setStartTime(Date.now());
@@ -32,7 +45,7 @@ export const useGameLogic = () => {
   }, [setGameState, setStartTime, setLastEmailTime]);
 
   const handleDecision = useCallback((isPhishing: boolean) => {
-    const currentEmail = sampleEmails[currentIndex];
+    const currentEmail = shuffledEmails[currentIndex];
     const correct = isPhishing === currentEmail.isPhishing;
 
     addDecision({
@@ -43,14 +56,14 @@ export const useGameLogic = () => {
 
     setShowFeedback(true);
     setShowHighlights(true);
-  }, [currentIndex, addDecision, setShowFeedback, setShowHighlights]);
+  }, [currentIndex, addDecision, setShowFeedback, setShowHighlights, shuffledEmails]);
 
   const handleNext = useCallback(() => {
     setShowFeedback(false);
     setShowHighlights(false);
     setShowDetailedExplanation(false);
 
-    if (currentIndex < sampleEmails.length - 1) {
+    if (currentIndex < shuffledEmails.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setLastEmailTime(Date.now());
     } else {
@@ -64,6 +77,7 @@ export const useGameLogic = () => {
     setShowFeedback,
     setShowHighlights,
     setShowDetailedExplanation,
+    shuffledEmails,
   ]);
 
   const calculateStats = useCallback((): GameStats => {
@@ -89,5 +103,7 @@ export const useGameLogic = () => {
     handleNext,
     calculateStats,
     restartGame,
+    currentEmail: shuffledEmails[currentIndex],
+    totalEmails: shuffledEmails.length,
   };
 }; 
