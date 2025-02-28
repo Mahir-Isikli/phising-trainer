@@ -391,7 +391,8 @@ Bei Fragen stehe ich Ihnen gerne zur Verfügung.
 Vielen Dank für Ihre Kooperation!
 
 Mit freundlichen Grüßen,
-[Name Datenschutzbeauftragter]`,
+Thomas Müller
+Datenschutzbeauftragter`,
     isPhishing: false,
     explanation: "Legitime interne Erinnerung an eine verpflichtende Datenschutzschulung, verwendet korrekte Firmen-Domain und professionelle Sprache.",
     highlights: {
@@ -428,7 +429,7 @@ Mit freundlichen Grüßen,
       name: "Online Gewinnzentrale",
       email: "gewinnbenachrichtigung@online-gewinn-aktion.com"
     },
-    content: `Sehr geehrte/r [Ihr Name],
+    content: `Sehr geehrte/r Herr Weber,
 
 herzlichen Glückwunsch! Sie haben bei unserem aktuellen Online-Gewinnspiel 1.000€ gewonnen!
 
@@ -629,14 +630,14 @@ Ihr IT-Helpdesk Team`,
   },
   {
     id: 13,
-    subject: "Letzte Mahnung: Rechnung #2024-00876 - [Betrag] EUR fällig!",
+    subject: "Letzte Mahnung: Rechnung #2024-00876 - 249,95 EUR fällig!",
     from: {
       name: "Inkasso Service Online",
       email: "inkasso@schnell-inkasso-service24.com"
     },
-    content: `Sehr geehrte/r Frau/Herr [Nachname],
+    content: `Sehr geehrte/r Frau/Herr Schmidt,
 
-trotz mehrfacher Mahnungen haben wir bis heute keinen Zahlungseingang für unsere Rechnung #2024-00876 über [Betrag] EUR erhalten.
+trotz mehrfacher Mahnungen haben wir bis heute keinen Zahlungseingang für unsere Rechnung #2024-00876 über 249,95 EUR erhalten.
 
 Dies ist unsere letzte Mahnung. Um weitere Mahngebühren und Inkassokosten zu vermeiden, überweisen Sie den ausstehenden Betrag bitte umgehend auf folgendes Konto:
 
@@ -653,7 +654,7 @@ Ihr Inkasso Service Online`,
     highlights: {
       subject: [
         {
-          text: "Letzte Mahnung: Rechnung #2024-00876 - [Betrag] EUR fällig!",
+          text: "Letzte Mahnung: Rechnung #2024-00876 - 249,95 EUR fällig!",
           type: "suspicious",
           explanation: "Drohender Betreff, der Angst vor Inkassomaßnahmen auslösen soll."
         }
@@ -686,28 +687,28 @@ Ihr Inkasso Service Online`,
   },
   {
     id: 14,
-    subject: "Newsletter April-Aktionen bei [Online Shop Name]",
+    subject: "Newsletter April-Aktionen bei MediaMarkt",
     from: {
-      name: "[Online Shop Name] Newsletter",
-      email: "newsletter@aktionen-[onlineshopname].de"
+      name: "MediaMarkt Newsletter",
+      email: "newsletter@aktionen-mediamarkt.de"
     },
-    content: `Hallo [Kunde/Kundin],
+    content: `Hallo MediaMarkt-Kunde,
 
 entdecken Sie die besten Angebote im April in unserem Newsletter!
 
-[Zu den April-Aktionen](https://www.aktionen-[onlineshopname].de/april-aktionen)
+[Zu den April-Aktionen](https://www.aktionen-mediamarkt.de/april-aktionen)
 
 Profitieren Sie von exklusiven Rabatten und neuen Produkten.
 
 Viel Spaß beim Stöbern!
 
-Ihr Team von [Online Shop Name]`,
+Ihr Team von MediaMarkt`,
     isPhishing: false,
     explanation: "Legitimer Newsletter eines Online-Shops mit aktuellen Aktionsangeboten, verwendet plausible Domain und typische Newsletter-Inhalte.",
     highlights: {
       sender: [
         {
-          text: "newsletter@aktionen-[onlineshopname].de",
+          text: "newsletter@aktionen-mediamarkt.de",
           type: "legitimate",
           explanation: "E-Mail-Adresse verwendet eine plausible Domain für einen Shop-Newsletter."
         }
@@ -724,7 +725,7 @@ Ihr Team von [Online Shop Name]`,
           explanation: "Typische Inhalte eines Newsletters von Online-Shops."
         },
         {
-          text: "https://www.aktionen-[onlineshopname].de/april-aktionen",
+          text: "https://www.aktionen-mediamarkt.de/april-aktionen",
           type: "legitimate",
           explanation: "Link führt zu einer plausiblen Domain für Shop-Aktionen."
         }
@@ -851,7 +852,7 @@ Die Geschäftsführung`,
       name: "Ihr Stromanbieter - EnergieDirekt GmbH",
       email: "kundenservice@energie-direkt-info.net"
     },
-    content: `Sehr geehrte/r Frau/Herr [Nachname],
+    content: `Sehr geehrte/r Frau/Herr Schmidt,
 
 wir möchten Sie über eine wichtige Änderung in Ihrem Stromvertrag informieren. Aufgrund der aktuellen Marktentwicklung und gestiegener Energiepreise sehen wir uns gezwungen, unsere Tarife anzupassen.
 
@@ -952,7 +953,7 @@ Das Projektmanagement Office`,
       name: "Netflix Kundenservice",
       email: "netflix-konto-info@netflix-zahlungsproblem.com"
     },
-    content: `Sehr geehrte/r Netflix-Kunde/Kundin,
+    content: `Sehr geehrte/r Netflix-Kunde Frau Müller,
 
 leider konnten wir Ihre letzte Zahlung für Ihr Netflix-Abonnement nicht verarbeiten. Ihr Abonnement wurde daher vorübergehend pausiert.
 
